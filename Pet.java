@@ -5,7 +5,17 @@ public abstract class Pet {
 
     Pet(String name, double health, int painLevel) {
         this.name = name;
-        this.health = health > 1.0 ? 1.0 : health;
+
+        if (health > 1.0) {
+            this.health = 1.0;
+        }
+        else if (health < 0.0) {
+            this.health = 0.0;
+        }
+        else {
+            this.health = health;
+        }
+
         if (painLevel > 10) {
             this.painLevel = 10;
         }

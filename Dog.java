@@ -1,9 +1,18 @@
 public class Dog extends Pet {
     private double droolRate;
 
+    // public static void main(String[] args) {
+    //     Dog carl = new Dog("carl", 0.36, 7, 10);
+    //     carl.speak();
+    //     int minutes = carl.treat();
+    //     System.out.println(minutes);
+    //     carl.speak();
+    //     System.out.println(carl.equals(carl));
+    // }
+
     Dog(String name, double health, int painLevel, double droolRate) {
         super(name, health, painLevel);
-        this.droolRate = droolRate;
+        this.droolRate = droolRate <= 0 ? 0.5 : droolRate;
     }
 
     Dog(String name, double health, int painLevel) {
@@ -15,8 +24,6 @@ public class Dog extends Pet {
     }
 
     public int treat() {
-        super.heal();
-
         double minutes;
         if (droolRate < 3.5) {
             minutes = (this.getPainLevel() * 2) / this.getHealth();
@@ -27,6 +34,7 @@ public class Dog extends Pet {
         else {
             minutes = this.getPainLevel() / (this.getHealth() * 2);
         }
+        super.heal();
 
         return (int) Math.ceil(minutes);
     }

@@ -15,7 +15,6 @@ public class Cat extends Pet {
     }
 
     public int treat() {
-        super.heal();
         int minutes;
         if (miceCaught < 4) {
             minutes = (int) Math.ceil((this.getPainLevel() * 2) / this.getHealth());
@@ -26,6 +25,7 @@ public class Cat extends Pet {
         else {
             minutes = (int) Math.ceil(this.getPainLevel() / this.getHealth() * 2);
         }
+        super.heal();
         return minutes;
     }
 
